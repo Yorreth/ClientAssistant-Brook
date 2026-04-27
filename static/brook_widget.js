@@ -298,9 +298,8 @@
       history = [];
       const open = isOpen(locKey);
       const greeting = open
-        ? `Hey! 👋 I'm ${BOT_NAME}, your assistant for ${GROUP_NAME} — ${loc.label}. How can I help you today?`
-        : `Hey! 👋 I'm ${BOT_NAME}. The ${loc.label} location is currently closed, but I'm here to help. You can book online anytime and our team will confirm during business hours.`;
-      this.addMsg(greeting, "bot");
+        ? `Hey! 👋 I'm ${BOT_NAME}, your assistant for ${GROUP_NAME} — ${loc.label}. I can also assist in Punjabi, Tagalog, Ukrainian, Russian and more. How can I help you today?`
+        : `Hey! 👋 I'm ${BOT_NAME}. The ${loc.label} location is currently closed, but I'm here to help. I can also assist in Punjabi, Tagalog, Ukrainian, Russian and more. You can book online anytime and our team will confirm during business hours.`;
       this.showFirstButtons();
       setTimeout(() => document.getElementById("bk-input").focus(), 200);
     },
