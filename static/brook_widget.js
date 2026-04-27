@@ -437,12 +437,8 @@
         this.showCallOnly(); return;
       }
 
-      // Hours — check BOTH user message AND bot reply so it works in any language
-      const hoursInReply = replyL.includes("am -") || replyL.includes("am–") || replyL.includes("pm -") || replyL.includes("pm–") ||
-                           replyL.includes("monday") || replyL.includes("tuesday") || replyL.includes("here are our hours");
-      const hoursInMsg   = lower.includes("hour") || lower.includes("open") || lower.includes("close") ||
-                           lower.includes("when do you") || lower.includes("what time");
-      if (hoursInReply || hoursInMsg) {
+      // Hours — trigger on exact phrase the prompt always returns in English
+      if (replyL.includes("here are our hours")) {
         this.showHours(); return;
       }
 
