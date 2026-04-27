@@ -432,17 +432,27 @@
 
       const replyL = data.reply.toLowerCase();
 
+      // Emergency — check reply
       if (replyL.includes("call us immediately") || replyL.includes("emergency room") || replyL.includes("call 911")) {
         this.showCallOnly(); return;
       }
-      if (lower.includes("hour") || lower.includes("open") || lower.includes("close") ||
-          lower.includes("when do you") || lower.includes("what time")) {
+
+      // Hours — check BOTH user message AND bot reply so it works in any language
+      const hoursInReply = replyL.includes("am -") || replyL.includes("am–") || replyL.includes("pm -") || replyL.includes("pm–") ||
+                           replyL.includes("monday") || replyL.includes("tuesday") || replyL.includes("here are our hours");
+      const hoursInMsg   = lower.includes("hour") || lower.includes("open") || lower.includes("close") ||
+                           lower.includes("when do you") || lower.includes("what time");
+      if (hoursInReply || hoursInMsg) {
         this.showHours(); return;
       }
+
+      // Location / map
       if (replyL.includes("address") || replyL.includes("located") ||
           replyL.includes("st. mary") || replyL.includes("keewatin") || replyL.includes("sargent")) {
         this.showMapButton(); return;
       }
+
+      // Book / call
       if (replyL.includes("book") || replyL.includes("appointment") ||
           replyL.includes("online") || replyL.includes("call") || replyL.includes("phone")) {
         this.showBookCall();

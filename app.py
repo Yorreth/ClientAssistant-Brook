@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app, origins=[
     "https://www.westbrookdental.ca",
     "https://westbrookdental.ca",
-    "https://clientassistant-brook-production.up.railway.app"
+    "https://web-production-b09ad.up.railway.app/"
 ])
 
 groq_api_key = os.environ.get("GROQ_API_KEY", "")
